@@ -120,8 +120,10 @@ def _read_instructions(parser, prototype):
     header.A = prototype.framesize
     prototype.instructions.append(header)
 
+    enc = 0
     while i < parser.instructions_count:
-        instruction = ljd.rawdump.code.read(parser)
+        instruction = ljd.rawdump.code.read(parser, enc)
+        enc += 0x5C
 
         if not instruction:
             return False

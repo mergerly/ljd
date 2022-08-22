@@ -485,8 +485,8 @@ def _build_statement(state, addr, instruction):
         return _build_return(state, addr, instruction)
 
     else:
-        assert opcode == ins.UCLO.opcode or (
-                ins.LOOP.opcode <= opcode <= ins.JLOOP.opcode)
+        #assert opcode == ins.UCLO.opcode or (
+        #        ins.LOOP.opcode <= opcode <= ins.JLOOP.opcode)
         # NoOp
         # TODO get the line no. for the loop set up
         return None, None

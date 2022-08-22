@@ -8,10 +8,12 @@ from ljd.util.log import errprint
 _MAP = [None] * 256
 
 
-def read(parser):
+def read(parser, enc):
     global _MAP
 
     codeword = parser.stream.read_uint(4)
+    encword = (((enc+0x5C) & 0xFF) <<24) + (((enc+0x45) & 0xFF)<<16) + (((enc+0x2E)&0xFF)<<8) + ((enc+0x17)&0xFF)
+    codeword = codeword ^ encword
 
     opcode = codeword & 0xFF
 
